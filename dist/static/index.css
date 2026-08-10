@@ -1,0 +1,748 @@
+/* Hand-written stylesheet — no framework. Replaces Bulma plus the parts of
+   https://nerfies.github.io/static/css/index.css (CC BY-SA 4.0) we still use.
+   Approach: style semantic elements directly; classes only where an element
+   has no natural name (layout containers, the islands, paper-page parts). */
+
+/* --- Base --- */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+body {
+	margin: 0;
+	font-family: "Noto Sans", sans-serif;
+	font-size: 1rem;
+	line-height: 1.5;
+	color: #4a4a4a;
+}
+
+h1,
+h2,
+h3 {
+	font-family: "Google Sans", "Noto Sans", sans-serif;
+	color: #363636;
+	font-weight: 600;
+	line-height: 1.125;
+	margin: 0 0 1.5rem;
+}
+
+h1 {
+	font-size: 3rem;
+}
+
+h2 {
+	font-size: 2rem;
+}
+
+h3 {
+	font-size: 1.5rem;
+	margin-bottom: 1rem;
+}
+
+p {
+	margin: 0 0 1em;
+}
+
+a {
+	color: #3273dc;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+a:hover {
+	color: #363636;
+}
+
+strong {
+	color: #363636;
+}
+
+img,
+video {
+	max-width: 100%;
+}
+
+button {
+	font: inherit;
+}
+
+pre {
+	background: #f5f5f5;
+	color: #4a4a4a;
+	padding: 1.25rem 1.5rem;
+	overflow-x: auto;
+	white-space: pre;
+	font-size: 0.875em;
+	border-radius: 4px;
+}
+
+section {
+	padding: 3rem 1.5rem;
+}
+
+/* --- Layout --- */
+
+.container {
+	max-width: 960px;
+	margin-inline: auto;
+}
+
+.container.narrow {
+	max-width: 768px;
+}
+
+.container.wide {
+	max-width: 1152px;
+}
+
+.centered {
+	text-align: center;
+}
+
+/* Justified body text (abstract, captions, ...). */
+.prose {
+	text-align: justify;
+}
+
+/* Side-by-side columns that stack on small screens. */
+.two-cols {
+	display: flex;
+	gap: 1.5rem;
+}
+
+.two-cols > div {
+	flex: 1;
+	min-width: 0;
+}
+
+@media (max-width: 768px) {
+	.two-cols {
+		flex-direction: column;
+	}
+}
+
+/* Full-width tinted strip (results carousel). */
+.band {
+	background: #f5f5f5;
+	color: rgba(0, 0, 0, 0.7);
+	padding: 1.5rem;
+}
+
+/* --- Masthead (title, authors, links) --- */
+
+.masthead {
+	text-align: center;
+}
+
+.publication-title {
+	font-family: "Google Sans", sans-serif;
+}
+
+.publication-authors {
+	font-family: "Google Sans", sans-serif;
+	font-size: 1.25rem;
+}
+
+.publication-authors.author-note {
+	font-size: 1rem;
+}
+
+.publication-authors a {
+	color: hsl(204, 86%, 53%);
+}
+
+.publication-authors a:hover {
+	text-decoration: underline;
+}
+
+.author-block {
+	display: inline-block;
+}
+
+.publication-links {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 10px;
+	margin-top: 1.5rem;
+}
+
+/* Dark rounded link button ("Paper", "arXiv", ...). */
+.pill {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5em;
+	background: #363636;
+	color: #fff;
+	border-radius: 9999px;
+	padding: 0.5em 1.1em;
+}
+
+.pill:hover {
+	background: #1f1f1f;
+	color: #fff;
+}
+
+/* --- Brand mark & teaser --- */
+
+.brand {
+	font-variant: small-caps;
+}
+
+.teaser {
+	padding-top: 0;
+	font-family: "Google Sans", sans-serif;
+}
+
+.subtitle {
+	font-size: 1.25rem;
+	font-weight: 400;
+	text-align: center;
+	color: #4a4a4a;
+}
+
+/* --- Figures & embeds --- */
+
+.workflow-image {
+	width: 100%;
+	height: auto;
+}
+
+.publication-video {
+	position: relative;
+	width: 100%;
+	height: 0;
+	padding-bottom: 56.25%;
+	overflow: hidden;
+	border-radius: 10px;
+}
+
+.publication-video iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+
+/* --- Results carousel (hydrated island) --- */
+
+.results-carousel {
+	overflow: hidden;
+}
+
+.results-carousel .item {
+	margin: 5px;
+	overflow: hidden;
+	border: 1px solid #bbb;
+	border-radius: 10px;
+	padding: 0;
+	font-size: 0;
+}
+
+.results-carousel video {
+	margin: 0;
+	width: 100%;
+}
+
+.video-carousel {
+	position: relative;
+}
+
+.video-carousel-viewport {
+	overflow: hidden;
+}
+
+.video-carousel-track {
+	display: flex;
+	align-items: center;
+}
+
+.video-carousel-nav {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	z-index: 1;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 42px;
+	height: 42px;
+	border: 1px solid #fff;
+	border-radius: 50%;
+	background: rgba(255, 255, 255, 0.85);
+	color: #363636;
+	cursor: pointer;
+	transition: background 150ms ease;
+}
+
+.video-carousel-nav:hover {
+	background: #fff;
+}
+
+.video-carousel-nav.is-prev {
+	left: 0.75rem;
+}
+
+.video-carousel-nav.is-next {
+	right: 0.75rem;
+}
+
+.video-carousel-dots {
+	position: absolute;
+	bottom: 10px;
+	left: 50%;
+	transform: translateX(-50%);
+	display: flex;
+	gap: 7px;
+	z-index: 1;
+}
+
+.video-carousel-dot {
+	width: 9px;
+	height: 9px;
+	padding: 0;
+	border: 1px solid rgba(255, 255, 255, 0.7);
+	border-radius: 50%;
+	background: rgba(120, 120, 120, 0.55);
+	cursor: pointer;
+}
+
+.video-carousel-dot.is-active {
+	background: #363636;
+}
+
+/* --- Interpolation panel (hydrated island) --- */
+
+.interpolation-panel {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+	background: #f5f5f5;
+	border-radius: 10px;
+	padding: 0.75rem;
+}
+
+.interpolation-panel .frame {
+	flex: 0 0 25%;
+	text-align: center;
+}
+
+.interpolation-panel .viewer {
+	flex: 1;
+	min-width: 0;
+}
+
+@media (max-width: 768px) {
+	.interpolation-panel {
+		flex-direction: column;
+	}
+
+	.interpolation-panel .frame {
+		flex-basis: auto;
+	}
+
+	.interpolation-panel .viewer {
+		width: 100%;
+	}
+}
+
+.interpolation-panel .interpolation-image {
+	width: 100%;
+	border-radius: 5px;
+}
+
+#interpolation-image-wrapper {
+	width: 100%;
+}
+
+#interpolation-image-wrapper img {
+	border-radius: 5px;
+	width: 100%;
+}
+
+input[type="range"].slider {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 100%;
+	height: 9px;
+	margin: 0;
+	border-radius: 6px;
+	background: #209cee;
+	outline: none;
+	cursor: pointer;
+}
+
+input[type="range"].slider::-webkit-slider-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	border: 1px solid #b5b5b5;
+	background: #fff;
+	cursor: grab;
+}
+
+input[type="range"].slider::-moz-range-thumb {
+	width: 22px;
+	height: 22px;
+	border-radius: 50%;
+	border: 1px solid #b5b5b5;
+	background: #fff;
+	cursor: grab;
+}
+
+input[type="range"].slider::-moz-range-track {
+	background: #209cee;
+	height: 9px;
+	border-radius: 6px;
+}
+
+/* --- Navbar (hydrated island; only rendered when site.yaml has a navbar) --- */
+
+nav.navbar {
+	position: relative;
+	display: flex;
+	align-items: stretch;
+	min-height: 3.25rem;
+	background: #fff;
+}
+
+.navbar-brand {
+	display: flex;
+	align-items: stretch;
+}
+
+.navbar-burger {
+	display: none;
+	margin-left: auto;
+	width: 3.25rem;
+	border: none;
+	background: none;
+	cursor: pointer;
+}
+
+.navbar-burger span {
+	display: block;
+	width: 16px;
+	height: 1px;
+	margin: 2px auto;
+	background: #4a4a4a;
+}
+
+.navbar-menu {
+	display: flex;
+	flex-grow: 1;
+}
+
+.navbar-start {
+	display: flex;
+	align-items: stretch;
+}
+
+.navbar-item,
+.navbar-link {
+	display: flex;
+	align-items: center;
+	padding: 0.5rem 0.75rem;
+	color: #4a4a4a;
+}
+
+a.navbar-item:hover,
+.navbar-link:hover {
+	color: #3273dc;
+}
+
+.has-dropdown {
+	position: relative;
+	cursor: pointer;
+}
+
+.navbar-dropdown {
+	display: none;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	z-index: 10;
+	min-width: 100%;
+	background: #fff;
+	border-top: 2px solid #dbdbdb;
+	border-radius: 0 0 6px 6px;
+	box-shadow: 0 8px 8px rgba(10, 10, 10, 0.1);
+	padding: 0.5rem 0;
+}
+
+.has-dropdown:hover .navbar-dropdown {
+	display: block;
+}
+
+@media (max-width: 1023px) {
+	nav.navbar {
+		display: block;
+	}
+
+	.navbar-burger {
+		display: block;
+	}
+
+	.navbar-menu {
+		display: none;
+	}
+
+	.navbar-menu.is-active {
+		display: block;
+	}
+
+	.navbar-dropdown {
+		position: static;
+		box-shadow: none;
+	}
+}
+
+/* --- Footer --- */
+
+footer {
+	background: #fafafa;
+	padding: 3rem 1.5rem 6rem;
+}
+
+footer .icon-link {
+	font-size: 25px;
+	color: #000;
+	margin: 0 0.25rem;
+}
+
+/* --- Results table --- */
+
+.table-scroll {
+	overflow-x: auto;
+}
+
+.results {
+	/* Sized by its columns' content, centered in the container. */
+	width: auto;
+	margin-inline: auto;
+	border-collapse: collapse;
+	font-size: 0.95rem;
+}
+
+.results th,
+.results td {
+	padding: 0.5em 0.9em;
+	text-align: center;
+	border: 1px solid #e6e6e6;
+}
+
+.results thead th {
+	background: #f7f7f8;
+}
+
+/* Soft emphasis on the Avg. columns, only while their group is expanded.
+   :where() keeps specificity low and this block precedes the hover rules,
+   so the hover highlight wins where they collide. */
+.results:where(.show-narrative) tbody td.avg-narrative,
+.results:where(.show-cultural) tbody td.avg-cultural {
+	background: #efedf5;
+}
+
+/* Hover highlights: row via CSS, column via the client.ts enhancer. */
+.results tbody tr:hover td,
+.results tbody td.col-hover {
+	background: #f2f7ff;
+}
+
+.results tbody tr:hover td.col-hover {
+	background: #e3eefc;
+}
+
+.results th.model,
+.results td.model {
+	text-align: left;
+}
+
+.results .from {
+	font-size: 0.8em;
+	color: #7a7a7a;
+}
+
+/* Sub-task columns are folded away until the group header arrow is clicked. */
+.results .sub {
+	display: none;
+	color: #666;
+}
+
+.results.show-narrative .sub.g-narrative,
+.results.show-cultural .sub.g-cultural {
+	display: table-cell;
+}
+
+.results button.expand {
+	border: none;
+	background: none;
+	padding: 0;
+	font: inherit;
+	font-weight: 700;
+	color: #363636;
+	cursor: pointer;
+}
+
+.results button.expand::after {
+	content: " \25B8"; /* ▸ */
+	font-weight: 400;
+}
+
+.results.show-narrative button.expand[data-group="narrative"]::after,
+.results.show-cultural button.expand[data-group="cultural"]::after {
+	content: " \25BE"; /* ▾ */
+}
+
+/* --- Results tabs (RQ1 / RQ2 / RQ3) --- */
+
+.tabs {
+	display: flex;
+	justify-content: center;
+	gap: 0.25rem;
+	margin-bottom: 1.25rem;
+	border-bottom: 1px solid #e6e6e6;
+}
+
+.tabs .tab {
+	border: none;
+	background: none;
+	cursor: pointer;
+	padding: 0.5em 1.1em;
+	color: #7a7a7a;
+	border-bottom: 2px solid transparent;
+	margin-bottom: -1px;
+}
+
+.tabs .tab:hover {
+	color: #363636;
+}
+
+.tabs .tab.is-active {
+	color: #363636;
+	font-weight: 600;
+	border-bottom-color: #363636;
+}
+
+/* Explanatory paragraph under a tab's table/figures — real prose, not a
+   caption: justified, overriding the section's centered alignment. */
+.tab-desc {
+	max-width: 768px;
+	margin: 1.5rem auto 0;
+	color: #555;
+	text-align: justify;
+}
+
+.tab-panel {
+	display: none;
+}
+
+.tab-panel.is-active {
+	display: block;
+}
+
+/* Top-align variant for side-by-side figures of different heights. */
+.two-cols.top {
+	align-items: flex-start;
+}
+
+.plot-image {
+	width: 100%;
+	height: auto;
+}
+
+/* --- Vertical tabs (annotation pipeline) --- */
+
+.vtabs {
+	display: flex;
+	align-items: flex-start;
+	text-align: left;
+}
+
+.vtabs .tabs.vertical {
+	flex: 0 0 260px;
+	flex-direction: column;
+	justify-content: flex-start;
+	gap: 0;
+	margin: 0;
+	border-bottom: none;
+}
+
+.tabs.vertical .tab,
+.tabs.vertical .tab-heading {
+	position: relative;
+	border: 1px solid #e6e6e6;
+	margin: -1px 0 0;
+	padding: 0.7em 1em;
+	text-align: left;
+	background: #f4f4f5;
+}
+
+.tabs.vertical .tab:first-child,
+.tabs.vertical .tab-heading:first-child {
+	margin-top: 0;
+}
+
+.tabs.vertical .tab {
+	color: #555;
+	cursor: pointer;
+}
+
+.tabs.vertical .tab:hover {
+	color: #363636;
+}
+
+/* Active tab shares the panel's background; its white right border sits on
+   top of the panel's left border so the two visually merge. */
+.tabs.vertical .tab.is-active {
+	background: #fff;
+	border-right-color: #fff;
+	color: #363636;
+	font-weight: 600;
+	z-index: 2;
+}
+
+.tabs.vertical .tab.indent {
+	padding-left: 2.2em;
+}
+
+.tabs.vertical .tab-heading {
+	color: #555;
+}
+
+.vtabs .vtab-panels {
+	flex: 1;
+	min-width: 0;
+	margin-left: -1px;
+	border: 1px solid #e6e6e6;
+	background: #fff;
+	padding: 1.25rem 1.5rem;
+}
+
+@media (max-width: 768px) {
+	.vtabs {
+		flex-direction: column;
+	}
+
+	.vtabs .tabs.vertical {
+		flex-basis: auto;
+		width: 100%;
+	}
+
+	.vtabs .vtab-panels {
+		margin-left: 0;
+		margin-top: -1px;
+	}
+}
+
+/* Verbatim prompt display: wrap long lines instead of scrolling. */
+.prompt {
+	margin: 0;
+	white-space: pre-wrap;
+}
