@@ -1,14 +1,30 @@
 import { mkdir } from "node:fs/promises";
 import { basename } from "node:path";
 import { $, Glob } from "bun";
+import { renderToString } from "preact-render-to-string";
+import { mounts } from "../src/mounts";
 
-const html =
+let html =
     await $`typst compile --features html --format html --root . src/main.typ -`
         .quiet()
         .text();
 
-await mkdir("docs/static", { recursive: true });
+for (const { id, vnode } of mounts) {
+    const v = vnode();
+    if (!v) {
+        continue;
+    }
 
+    const re = new RegExp(`(<div[^>]*\\bid="${id}"[^>]*>)(</div>)`);
+    if (!re.test(html)) {
+        // skip commented out mount in page.typ
+        console.warn(`note: mount div #${id} not in typst output, skipped`);
+        continue;
+    }
+    html = html.replace(re, `$1${renderToString(v)}$2`);
+}
+
+await mkdir("docs/static", { recursive: true });
 await Bun.write("docs/.nojekyll", "");
 await Bun.write("docs/index.html", html);
 for await (const pdf of new Glob("assets/*.pdf").scan()) {
