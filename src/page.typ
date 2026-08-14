@@ -90,6 +90,13 @@
   ]
 ]
 
+#section(id: "algorithms")[
+  #div("container wide")[
+    #div("centered")[#title3[Algorithms]]
+    #include "content/algorithms.typ"
+  ]
+]
+
 #section(id: "BibTeX")[
   #div("container")[
     #include "content/bibtex.typ"
