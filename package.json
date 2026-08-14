@@ -6,11 +6,14 @@
     "format": "biome format --write . && typstyle -i src",
     "lint": "biome lint .",
     "check": "biome check .",
-    "build": "bun run build.ts",
-    "preview": "bun run serve.ts"
+    "build": "bun run scripts/build.ts",
+    "preview": "bun run scripts/serve.ts"
   },
   "dependencies": {
     "preact": "^10.29.8",
     "preact-render-to-string": "^6.7.0"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.3.14"
   }
 }
