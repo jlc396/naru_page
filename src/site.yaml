@@ -2,7 +2,7 @@ site:
   title: NARUBench
   description: ""
   keywords: benchmark, cultural understanding, long-form video understanding, multimodal large language models, video question answering
-hero:
+masthead:
   title: 'NARU: A Benchmark for NARrative Evolution and Cultural Nuance Understanding in Japanese Extreme Long Video'
   authors:
     - name: Yuheng Huang
