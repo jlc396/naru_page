@@ -1,0 +1,73 @@
+{
+  "_comment": "RQ1 — main results (MCQ). Values are raw correct-answer counts; totals holds each sub-task's question count (N). Accuracies, macro-averages, and overall are derived at build time.",
+  "totals": {
+    "narrative": [185, 187, 186, 187],
+    "cultural": [143, 147, 148, 149, 149]
+  },
+  "models": [
+    {
+      "name": "Gemini-3-Flash",
+      "href": "https://deepmind.google/models/gemini/flash/",
+      "from": "Google",
+      "sampling": "0.25 FPS",
+      "narrative": [155, 170, 156, 146],
+      "cultural": [102, 102, 85, 109, 104]
+    },
+    {
+      "name": "Gemini-3-Pro",
+      "href": "https://deepmind.google/models/gemini/pro/",
+      "from": "Google",
+      "sampling": "0.25 FPS",
+      "narrative": [138, 147, 142, 125],
+      "cultural": [86, 101, 95, 104, 100]
+    },
+    {
+      "name": "Gemini-2.5-Flash",
+      "href": "https://deepmind.google/models/gemini/flash/",
+      "from": "Google",
+      "sampling": "0.25 FPS",
+      "narrative": [95, 118, 108, 95],
+      "cultural": [54, 73, 72, 75, 72]
+    },
+    {
+      "name": "Qwen3.5-9B",
+      "href": "https://qwenlm.github.io/",
+      "from": "Alibaba",
+      "sampling": "128 Frames",
+      "narrative": [64, 91, 65, 64],
+      "cultural": [59, 72, 51, 61, 62]
+    },
+    {
+      "name": "Qwen3-VL-8B",
+      "href": "https://qwenlm.github.io/",
+      "from": "Alibaba",
+      "sampling": "0.25 FPS",
+      "narrative": [66, 87, 74, 67],
+      "cultural": [46, 59, 49, 58, 49]
+    },
+    {
+      "name": "Qwen2.5-VL-7B",
+      "href": "https://qwenlm.github.io/",
+      "from": "Alibaba",
+      "sampling": "128 Frames",
+      "narrative": [47, 79, 57, 49],
+      "cultural": [32, 60, 38, 36, 42]
+    },
+    {
+      "name": "MiniCPM-o-2.6",
+      "href": "https://github.com/OpenBMB/MiniCPM-o",
+      "from": "OpenBMB",
+      "sampling": "128 Frames",
+      "narrative": [43, 77, 51, 59],
+      "cultural": [37, 55, 41, 33, 42]
+    },
+    {
+      "name": "InternVL3.5",
+      "href": "https://internvl.github.io/",
+      "from": "Shanghai AI Lab",
+      "sampling": "64 Frames",
+      "narrative": [37, 68, 48, 58],
+      "cultural": [46, 61, 47, 53, 48]
+    }
+  ]
+}

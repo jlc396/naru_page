@@ -1,0 +1,69 @@
+{
+  "_comment": "RQ3 — open-ended results (judge scores, 0-1). narrative = [N.1..N.4], cultural = [C.1..C.5]; the overall average is derived at build time.",
+  "models": [
+    {
+      "name": "Gemini-3-Flash",
+      "href": "https://deepmind.google/models/gemini/flash/",
+      "from": "Google",
+      "sampling": "0.25 FPS",
+      "narrative": [0.78, 0.66, 0.72, 0.75],
+      "cultural": [0.69, 0.87, 0.93, 0.85, 0.8]
+    },
+    {
+      "name": "Gemini-3-Pro",
+      "href": "https://deepmind.google/models/gemini/pro/",
+      "from": "Google",
+      "sampling": "0.25 FPS",
+      "narrative": [0.77, 0.61, 0.71, 0.69],
+      "cultural": [0.65, 0.87, 0.88, 0.8, 0.72]
+    },
+    {
+      "name": "Gemini-2.5-Flash",
+      "href": "https://deepmind.google/models/gemini/flash/",
+      "from": "Google",
+      "sampling": "0.25 FPS",
+      "narrative": [0.62, 0.5, 0.58, 0.65],
+      "cultural": [0.56, 0.77, 0.84, 0.68, 0.73]
+    },
+    {
+      "name": "Qwen3.5-9B",
+      "href": "https://qwenlm.github.io/",
+      "from": "Alibaba",
+      "sampling": "128 Frames",
+      "narrative": [0.54, 0.49, 0.47, 0.5],
+      "cultural": [0.52, 0.66, 0.65, 0.6, 0.59]
+    },
+    {
+      "name": "Qwen3-VL-8B",
+      "href": "https://qwenlm.github.io/",
+      "from": "Alibaba",
+      "sampling": "0.25 FPS",
+      "narrative": [0.39, 0.23, 0.34, 0.36],
+      "cultural": [0.47, 0.64, 0.62, 0.39, 0.53]
+    },
+    {
+      "name": "Qwen2.5-VL-7B",
+      "href": "https://qwenlm.github.io/",
+      "from": "Alibaba",
+      "sampling": "128 Frames",
+      "narrative": [0.35, 0.24, 0.27, 0.28],
+      "cultural": [0.43, 0.47, 0.4, 0.28, 0.4]
+    },
+    {
+      "name": "MiniCPM-o-2.6",
+      "href": "https://github.com/OpenBMB/MiniCPM-o",
+      "from": "OpenBMB",
+      "sampling": "128 Frames",
+      "narrative": [0.21, 0.12, 0.15, 0.16],
+      "cultural": [0.23, 0.26, 0.3, 0.15, 0.31]
+    },
+    {
+      "name": "InternVL3.5",
+      "href": "https://internvl.github.io/",
+      "from": "Shanghai AI Lab",
+      "sampling": "64 Frames",
+      "narrative": [0.4, 0.14, 0.27, 0.35],
+      "cultural": [0.43, 0.49, 0.47, 0.39, 0.51]
+    }
+  ]
+}
