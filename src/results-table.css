@@ -1,0 +1,78 @@
+.table-scroll {
+	overflow-x: auto;
+}
+
+.results {
+	width: auto;
+	margin-inline: auto;
+	border-collapse: collapse;
+	font-size: 0.95rem;
+}
+
+.results th,
+.results td {
+	padding: 0.5em 0.9em;
+	text-align: center;
+	border: 1px solid var(--border);
+}
+
+.results thead th {
+	background: var(--surface-dim);
+}
+
+.results:where(.show-narrative) tbody td.avg-narrative,
+.results:where(.show-cultural) tbody td.avg-cultural {
+	background: var(--avg-highlight);
+}
+
+.results tbody tr:hover td,
+.results tbody td.col-hover {
+	background: var(--hover);
+}
+
+.results tbody tr:hover td.col-hover {
+	background: var(--hover-deep);
+}
+
+.results th.model,
+.results td.model {
+	text-align: left;
+}
+
+.results .from {
+	font-size: 0.8em;
+	color: var(--muted);
+}
+
+.results .sub {
+	/* folded */
+	display: none;
+	color: var(--text-soft);
+}
+
+.results.show-narrative .sub.g-narrative,
+.results.show-cultural .sub.g-cultural {
+	display: table-cell;
+}
+
+.results button.expand {
+	border: none;
+	background: none;
+	padding: 0;
+	font: inherit;
+	font-weight: 700;
+	color: var(--ink);
+	cursor: pointer;
+}
+
+.results button.expand::after {
+	/* ▸ */
+	content: " \25B8";
+	font-weight: 400;
+}
+
+.results.show-narrative button.expand[data-group="narrative"]::after,
+.results.show-cultural button.expand[data-group="cultural"]::after {
+	/* ▾ */
+	content: " \25BE";
+}
