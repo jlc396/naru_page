@@ -27,9 +27,8 @@ for (const { id, vnode } of mounts) {
 await mkdir("docs/static", { recursive: true });
 await Bun.write("docs/.nojekyll", "");
 await Bun.write("docs/index.html", html);
-for await (const pdf of new Glob("assets/*.pdf").scan()) {
-    if (basename(pdf) === "paper.pdf") continue;
-    await $`pdftocairo -svg ${pdf} docs/static/${basename(pdf, ".pdf")}.svg`.quiet();
+for await (const f of new Glob("assets/*").scan()) {
+    await Bun.write(`docs/static/${basename(f)}`, Bun.file(f));
 }
 await $`bun build src/client.ts --outfile docs/static/client.js --minify`.quiet();
 

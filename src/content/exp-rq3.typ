@@ -9,7 +9,7 @@
       Most strikingly, Sequential/Topical Flow (N.2) — the strongest narrative subcategory under multiple choice — degrades into the weakest narrative category for seven of the eight models, plausibly because multiple-choice options serve as structural scaffolds for temporal organization.
     ]
   ],
-  json("../../assets/results_RQ3.json"),
+  json("../data/results_RQ3.json"),
   digits: 0,
   avgs: false,
   scale: 100,

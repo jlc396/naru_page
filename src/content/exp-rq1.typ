@@ -9,5 +9,5 @@
       Category-level results reveal a capability-dependent split: the Gemini models achieve approximately 11 percentage points higher accuracy on narrative tasks than on cultural ones, whereas open-source models show virtually no difference between the two dimensions.
     ]
   ],
-  json("../../assets/results_RQ1.json"),
+  json("../data/results_RQ1.json"),
 )
