@@ -16,6 +16,17 @@ for await (const pdf of new Glob("assets/*.pdf").scan()) {
     await $`pdftocairo -svg ${pdf} docs/static/${basename(pdf, ".pdf")}.svg`.quiet();
 }
 await $`bun build src/client.ts --outfile docs/static/client.js --minify`.quiet();
-await Bun.write("docs/static/index.css", Bun.file("src/styles/index.css"));
+
+const base = "src/styles/index.css";
+const parts = [];
+for await (const f of new Glob("src/**/*.css").scan()) {
+    if (f !== base) parts.push(f);
+}
+parts.sort();
+let css = "";
+for (const f of [base, ...parts]) {
+    css += `/* === ${f} === */\n\n${await Bun.file(f).text()}\n`;
+}
+await Bun.write("docs/static/index.css", css);
 
 console.log(`Built docs/ (${(await $`du -sh docs`.text()).split("\t")[0]})`);

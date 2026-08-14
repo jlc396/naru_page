@@ -1,0 +1,94 @@
+.section-lead {
+	max-width: 48rem;
+	margin: 0 auto 1.25rem;
+	text-align: center;
+	color: var(--text-soft);
+	line-height: 1.5;
+}
+
+.algo-note {
+	margin: 0 0 1rem;
+	color: var(--text-soft);
+	line-height: 1.55;
+	text-align: left;
+}
+
+.algo-note p {
+	margin: 0 0 0.65rem;
+}
+
+.algo-note p:last-child {
+	margin-bottom: 0;
+}
+
+.algorithm {
+	border: 1px solid var(--border-dark);
+	background: var(--surface-faint);
+	text-align: left;
+}
+
+.algorithm-caption {
+	padding: 0.65rem 1rem;
+	border-bottom: 1px solid var(--border-dark);
+	background: var(--surface-dim);
+	font-family: "Google Sans", sans-serif;
+	font-size: 0.95rem;
+}
+
+.algorithm-label {
+	font-weight: 700;
+	margin-right: 0.4em;
+}
+
+.algorithm-body {
+	margin: 0;
+	padding: 0.85rem 1rem 1rem 2.4rem;
+	font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+	font-size: 0.82rem;
+	line-height: 1.55;
+	counter-reset: algoline;
+	list-style: none;
+}
+
+.algorithm-body > li {
+	position: relative;
+	padding: 0.12rem 0 0.12rem 0.25rem;
+	counter-increment: algoline;
+}
+
+.algorithm-body > li::before {
+	content: counter(algoline);
+	position: absolute;
+	left: -1.7rem;
+	width: 1.4rem;
+	text-align: right;
+	color: var(--muted);
+	font-size: 0.75rem;
+}
+
+.algorithm-body .algo-line {
+	display: inline-block;
+	max-width: 100%;
+}
+
+.algorithm-body .algo-line.indent {
+	margin-left: 1.5rem;
+}
+
+.algorithm-body .algo-line.indent2 {
+	margin-left: 3rem;
+}
+
+.algorithm-body .algo-line.indent3 {
+	margin-left: 4.5rem;
+}
+
+.algorithm .kw {
+	font-weight: 700;
+	font-style: normal;
+}
+
+.algorithm .comment {
+	color: var(--muted);
+	font-style: italic;
+}
